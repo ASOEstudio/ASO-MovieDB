@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ASO-AngularDB'`, () => {
+  it(`should have as title 'ASO-MovieDB'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('ASO-AngularDB');
+    expect(app.title).toEqual('ASO-MovieDB');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to ASO-AngularDB!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to ASO-MovieDB!');
   });
 });
