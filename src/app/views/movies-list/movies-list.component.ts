@@ -9,15 +9,11 @@ import { Movie } from 'src/app/services/interfaces/movie';
 })
 export class MoviesListComponent implements OnInit {
 
-  result: Movie[] = [];
+  movies: Movie[] = [];
 
   constructor() { }
 
-  ngOnInit() {  
+  ngOnInit() { 
   }
-
-  // list(event) {
-  //   this.result = event;
-  // }
 
 }

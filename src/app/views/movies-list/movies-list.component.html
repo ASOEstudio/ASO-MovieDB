@@ -1,2 +1,4 @@
-<app-search (result)="result = $event"></app-search>
-<div style="width: 500px">{{result | json}}</div>
+<app-search (result)="movies = $event"></app-search>
+<app-movie-card *ngFor="let movie of movies"
+    [movie]="movie" [routerLink]="['/movie', movie.id]">
+</app-movie-card>

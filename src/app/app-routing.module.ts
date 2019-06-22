@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { MoviesListComponent } from './views/movies-list/movies-list.component';
-
 const routes: Routes = [
-  { path: '**', component: MoviesListComponent},
+  { path: '',
+    loadChildren: './views/views.module#ViewsModule' },
+  { path: '**',
+    redirectTo: '' },
 ];
 
 @NgModule({

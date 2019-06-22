@@ -9,20 +9,21 @@ import { MatAutocompleteModule } from '@angular/material';
 import { TmdbService } from 'src/app/services/tmdb.service';
 
 import { SearchComponent } from './search/search.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
 
 @NgModule({
   declarations: [
     SearchComponent,
+    MovieCardComponent,
   ],
   imports: [
     CommonModule,
     HttpClientModule,
-    SharedModule,
-
-    MatAutocompleteModule
+    SharedModule
   ],
   exports : [
-    SearchComponent
+    SearchComponent,
+    MovieCardComponent
   ],
   providers: [
     TmdbService

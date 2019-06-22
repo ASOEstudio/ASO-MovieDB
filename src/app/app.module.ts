@@ -16,7 +16,7 @@ import { ViewsModule } from './views/views.module';
     ViewsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
