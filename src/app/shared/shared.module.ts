@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { MatButtonModule, MatInputModule } from '@angular/material';
+import { MatInputModule, MatCardModule, MatButtonModule } from '@angular/material';
 
 @NgModule({
   declarations: [],
@@ -11,14 +11,16 @@ import { MatButtonModule, MatInputModule } from '@angular/material';
     ReactiveFormsModule,
 
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
   ],
   exports: [
     CommonModule,
     ReactiveFormsModule,
     
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
   ]
 })
 export class SharedModule { }

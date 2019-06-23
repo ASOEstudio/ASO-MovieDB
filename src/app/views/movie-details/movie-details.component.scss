@@ -1,0 +1,40 @@
+.primary-card {
+    position: relative;
+    padding: 0 .25rem 1rem;
+}
+.backdrop {
+    width: 100%;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    mask-image: linear-gradient(black 0%, transparent 95%);
+    border-color: white;
+    border-left: 2px solid;
+    border-right: 2px solid;
+}
+.info-container {
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500px;
+}
+.base-info-container {
+    display: flex;
+    align-items: flex-end;
+    padding: 0 2rem;
+}
+.base-info {
+    display: flex;
+    align-items: center;
+    h1 {
+        padding: 0 1rem;
+    }
+}
+.poster {
+    width: 250px;
+    margin-right: 1rem;
+}

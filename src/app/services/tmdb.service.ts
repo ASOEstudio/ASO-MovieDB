@@ -9,17 +9,23 @@ import { MovieRS } from './interfaces/movie-rs';
 const API = environment.API_ENDPOINT;
 const KEY = environment.API_KEY;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class TmdbService {
+
+  queryTerm: string;
 
   lang = 'language=pt-BR';
   adult = 'include_adult=true';
   
   constructor(private http: HttpClient) { }
 
-  searchItems(query: string, page: number = 1, type: string = 'movie') {
+  searchItems({ query = this.queryTerm, page = 1, type = 'movie' }: { query?: string; page?: number; type?: string; } = {}) {
     const search = 'query=' + query;
     const pageIndex = 'page=' + page;
+
+    console.log(this.queryTerm);
 
     return this.http.get(API + 'search/' + type + '?api_key=' + KEY +
       '&' + this.lang + '&' + this.adult + '&' + search + '&' + pageIndex)

@@ -1,3 +1,9 @@
-<p>
-  movie-card works!
-</p>
+<mat-card>
+  <div class="without-img" *ngIf="!movie.poster_path; else hasPoster">
+    <i class="far fa-image"></i>
+  </div>
+  <ng-template #hasPoster>
+    <img [src]="poster" [alt]="movie.title">
+  </ng-template>
+
+</mat-card>

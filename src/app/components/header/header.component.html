@@ -1,0 +1,6 @@
+<mat-toolbar class="toolbar" color="primary">
+  <header class="container">
+    <span class="title" [routerLink]="['/']">ASO - The Movie DB</span>
+    <app-search (result)="movies = $event"></app-search>
+  </header>
+</mat-toolbar>

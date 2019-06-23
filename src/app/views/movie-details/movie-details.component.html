@@ -1,4 +1,24 @@
-<p>
-  movie-details works!
-</p>
-{{movieDetails | json}}
+<main class="container">
+  <section class="primary-card">
+    <div class="backdrop" [ngStyle]="{'background-image' : backdrop ? backdrop : ''}"></div>
+
+    <div class="info-container">
+      <div class="base-info-container">
+        <img class="poster" [src]="poster" [alt]="movie.title">
+
+        <div class="base-info">
+          <h1>
+            {{movie.title}}
+          </h1>
+          <p>
+            <i class="far fa-calendar-check"></i>
+            {{fixDateObject(movie.release_date) | date:'dd MMM y'}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+{{movie | json}}

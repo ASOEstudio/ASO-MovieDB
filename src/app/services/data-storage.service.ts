@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 import { ConfigurationRS } from './interfaces/configuration-rs';
+import { MoviesRS } from './interfaces/movies-rs';
+import { Observable, Subject } from 'rxjs';
 
 const API = environment.API_ENDPOINT;
 const KEY = environment.API_KEY;
@@ -13,9 +15,14 @@ const KEY = environment.API_KEY;
 })
 export class DataStorageService {
 
-  configuration: ConfigurationRS
+  configuration: ConfigurationRS;
+  subject: Subject<MoviesRS>;
+  moviesQuery$: Observable<MoviesRS>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.subject = new Subject<MoviesRS>();
+    this.moviesQuery$ = this.subject.asObservable();
+  }
 
   getConfig() {
     this.http.get(API + 'configuration' + '?api_key=' + KEY)
@@ -25,7 +32,12 @@ export class DataStorageService {
     );
   }
 
-  private saveLocal(key: string, item: any) {
-    localStorage.setItem(key , JSON.stringify(item));
+  setMoviesQuery(data) {
+    this.subject.next(data);
   }
+
+  private saveLocal(key: string, item: any) {
+    localStorage.setItem(key, JSON.stringify(item));
+  }
+
 }
