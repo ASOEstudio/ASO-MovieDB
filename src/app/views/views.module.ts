@@ -2,22 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewsRoutingModule } from './views-routing.module';
 
-import { SharedModule } from '../shared/shared.module';
-
-import { MoviesListComponent } from './movies-list/movies-list.component';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
-import { MovieCardModule } from '../components/movie-card/movie-card.module';
+import { MovieDetailsModule } from './movie-details/movie-details.module';
+import { MoviesListModule } from './movies-list/movies-list.module';
 
 @NgModule({
-  declarations: [
-    MoviesListComponent,
-    MovieDetailsComponent
-  ],
+  declarations: [ ],
   imports: [
     CommonModule,
     ViewsRoutingModule,
-    SharedModule,
-    MovieCardModule,
+    
+    MovieDetailsModule,
+    MoviesListModule
   ]
 })
 export class ViewsModule { }

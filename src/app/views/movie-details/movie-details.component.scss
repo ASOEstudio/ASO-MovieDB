@@ -1,10 +1,12 @@
+@import '../../../global-variables.scss';
+
 .primary-card {
     position: relative;
     padding: 0 .25rem 1rem;
 }
 .backdrop {
     width: 100%;
-    height: 500px;
+    height: 450px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -20,7 +22,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 500px;
+    height: 450px;
 }
 .base-info-container {
     display: flex;
@@ -29,12 +31,43 @@
 }
 .base-info {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2rem;
     h1 {
-        padding: 0 1rem;
+        padding-right: 1rem;
+        text-shadow: 0px 2px 5px rgba(0,0,0,.5)
     }
 }
 .poster {
     width: 250px;
-    margin-right: 1rem;
+    margin-right: 2rem;
+    border: 1px solid rgba(255,255,255,.1);
+    box-shadow: .5rem 0 1rem rgba(0,0,0,.5);
+}
+.hightlight {
+    color: $mat-warn-color; 
+}
+.hightlight-accent {
+    color: $mat-accent-color;
+}
+.duration {
+    font-size: 1rem;
+    line-height: .8rem;
+    vertical-align: middle;
+}
+.overview {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    i {
+        color: $mat-primary-color;
+        text-shadow: 1px 1px 0 rgba(255,255,255,.8)
+    }
+    p {
+        line-height: 1.35;
+        font-size: 1.25rem;
+        letter-spacing: .1rem;
+        margin-left: 1.25rem;
+        font-weight: 300;
+    }
 }

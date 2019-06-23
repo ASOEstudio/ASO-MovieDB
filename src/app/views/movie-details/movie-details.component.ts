@@ -18,6 +18,7 @@ export class MovieDetailsComponent implements OnInit {
   movie: MovieRS;
   backdrop: string;
   poster: string;
+  loading = true;
 
   constructor(
     private aRoute: ActivatedRoute,
@@ -52,6 +53,8 @@ export class MovieDetailsComponent implements OnInit {
 
     this.poster = base_url + posterSize + this.movie.poster_path;
     this.backdrop = "url('" + base_url + backdropSize + this.movie.backdrop_path + "')";
+
+    this.loading = false;
   }
 
   fixDateObject(date) {

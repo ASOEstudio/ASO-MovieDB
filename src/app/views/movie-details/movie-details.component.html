@@ -1,24 +1,51 @@
-<main class="container">
-  <section class="primary-card">
-    <div class="backdrop" [ngStyle]="{'background-image' : backdrop ? backdrop : ''}"></div>
+<app-loader-spinner *ngIf="loading; else loaded"></app-loader-spinner>
+<ng-template #loaded>
+  <main class="container">
+    <section class="primary-card">
+      <div class="backdrop" [ngStyle]="{'background-image' : backdrop ? backdrop : ''}"></div>
 
-    <div class="info-container">
-      <div class="base-info-container">
-        <img class="poster" [src]="poster" [alt]="movie.title">
+      <div class="info-container">
+        <div class="base-info-container">
+          <img class="poster" [src]="poster" [alt]="movie.title">
 
-        <div class="base-info">
-          <h1>
-            {{movie.title}}
-          </h1>
-          <p>
-            <i class="far fa-calendar-check"></i>
-            {{fixDateObject(movie.release_date) | date:'dd MMM y'}}
-          </p>
+          <div class="base-info">
+            <div class="center-flex">
+              <h1>
+                {{movie.title}}
+              </h1>
+              <p [ngClass]="movie.status == 'Released' ? 'hightlight' : 'hightlight-accent'">
+                <i [ngClass]="movie.status == 'Released' ? 'far fa-calendar-check' : 'fas fa-calendar-day'"></i>
+                {{fixDateObject(movie.release_date) | date:'dd MMM y'}}
+              </p>
+            </div>
+
+            <div class="basic-flex">
+              <span class="chips hightlight">
+                <b class="duration">{{movie.runtime}}</b> min
+              </span>
+              <span class="chips" *ngFor="let genere of movie.genres">
+                {{genere['name']}}
+              </span>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-</main>
+    <section class="overview">
+      <div>
+        <h2>
+          <i class="fas fa-film"></i>
+          Leia a Sinopse
+        </h2>
+        <p>{{movie.overview}}</p>
+      </div>
+      <app-rating [rating]="movie.vote_average"></app-rating>
+    </section>
+
+  </main>
+  <app-datasheet></app-datasheet>
+</ng-template>
 
 {{movie | json}}
