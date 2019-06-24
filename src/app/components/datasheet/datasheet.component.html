@@ -69,9 +69,9 @@
       <div class="center-flex">
         <i class="fas fa-globe"></i>
         <p>
-          <b>{{movieData.spoken_languages.length > 1 ? 'Paises de Produção' : 'País de Produção'}}</b>
+          <b>{{movieData.production_countries.length > 1 ? 'Paises de Produção' : 'País de Produção'}}</b>
           <span *ngFor="let country of movieData.production_countries; let couInd = index">
-            {{country['name']}}{{movieData.spoken_languages.length - 1 != couInd ? ',' : ''}}
+            {{country['name']}}{{movieData.production_countries.length - 1 != couInd ? ',' : ''}}
           </span>
         </p>
       </div>
