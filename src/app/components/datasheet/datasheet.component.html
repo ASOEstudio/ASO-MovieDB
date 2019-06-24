@@ -1,3 +1,80 @@
-<p>
-  datasheet works!
-</p>
+<section>
+  <img class="poster" [src]="backdrop">
+  <div class="container info basic-flex">
+    <div class="info-section basic-flex">
+      <div class="center-flex">
+        <i class="fas fa-file-signature"></i>
+        <p>
+          <b>Título Original</b>
+          {{movieData.original_title}}
+        </p>
+      </div>
+
+      <div class="center-flex">
+        <i class="fas fa-calendar-day"></i>
+        <p>
+          <b>Data de Lançamento</b>
+          {{date | date:'dd MMMM y'}}
+        </p>
+      </div>
+
+      <div class="center-flex">
+        <i class="fas fa-building"></i>
+        <p>
+          <b>{{movieData.production_companies.length > 1 ? 'Produtoras' : 'Produtora'}}</b>
+          <span *ngFor="let companie of movieData.production_companies; let comInd = index">
+            {{companie['name']}}{{movieData.production_companies.length - 1 != comInd ? ',' : ''}}
+          </span>
+        </p>
+      </div>
+
+      <div class="center-flex">
+        <i class="fas fa-link"></i>
+        <p>
+          <b>Link Externo</b>
+          <a href="{{movieData.homepage}}" target="_blank">{{movieData.homepage}}</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="info-section basic-flex">
+      <div class="center-flex">
+        <i class="fas fa-tags"></i>
+        <p>
+          <b>{{movieData.genres.length > 1 ? 'Gêneros' : 'Gênero'}}</b>
+          <span *ngFor="let genre of movieData.genres; let genInd = index">
+            {{genre['name']}}{{movieData.genres.length - 1 != genInd ? ',' : ''}}
+          </span>
+        </p>
+      </div>
+
+      <div class="center-flex">
+        <i class="fas fa-clock"></i>
+        <p>
+          <b>Duração</b>
+          <span *ngIf="movieData.runtime">{{movieData.runtime}} min</span>
+        </p>
+      </div>
+
+      <div class="center-flex">
+        <i class="fas fa-volume-up"></i>
+        <p>
+          <b>{{movieData.spoken_languages.length > 1 ? 'Idiomas Originais' : 'Idioma Original'}}</b>
+          <span *ngFor="let language of movieData.spoken_languages; let lanInd = index">
+            {{language['name']}}{{movieData.spoken_languages.length - 1 != lanInd ? ',' : ''}}
+          </span>
+        </p>
+      </div>
+
+      <div class="center-flex">
+        <i class="fas fa-globe"></i>
+        <p>
+          <b>{{movieData.spoken_languages.length > 1 ? 'Paises de Produção' : 'País de Produção'}}</b>
+          <span *ngFor="let country of movieData.production_countries; let couInd = index">
+            {{country['name']}}{{movieData.spoken_languages.length - 1 != couInd ? ',' : ''}}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

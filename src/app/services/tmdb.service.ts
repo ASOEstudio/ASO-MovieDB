@@ -25,8 +25,6 @@ export class TmdbService {
     const search = 'query=' + query;
     const pageIndex = 'page=' + page;
 
-    console.log(this.queryTerm);
-
     return this.http.get(API + 'search/' + type + '?api_key=' + KEY +
       '&' + this.lang + '&' + this.adult + '&' + search + '&' + pageIndex)
       .pipe(map( res => res as MoviesRS ));

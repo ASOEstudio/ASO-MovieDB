@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { DataStorageService } from 'src/app/services/data-storage.service';
+import { MovieRS } from 'src/app/services/interfaces/movie-rs';
 
 @Component({
   selector: 'app-datasheet',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatasheetComponent implements OnInit {
 
-  constructor() { }
+  @Input() backdrop: string;
+  @Input() movieData: MovieRS;
+  date: Date;
+
+  constructor(private dataStoreServ: DataStorageService) { }
 
   ngOnInit() {
+    this.init()
+  }
+
+  init() {
+    if (this.movieData.release_date != '') {
+      this.date = this.dataStoreServ.fixDateObject(this.movieData.release_date);
+    }
   }
 
 }

@@ -1,3 +1,18 @@
+.mat-card {
+    display: flex;
+    align-items: center;
+    background-color: rgba(#673AB7,.1);
+    color: inherit;
+    cursor: pointer;
+    transition: background-color ease-in-out 0.25s;
+    &:hover {
+        background-color: rgba(#673AB7,.5);
+    }
+}
+.image-container {
+    margin-right: 1rem; 
+    width: fit-content;
+}
 .without-img {
     display: flex;
     align-items: center;
@@ -7,4 +22,10 @@
     background-color: rgba(0,0,0,0.25);
     font-size: 70px;
     color: rgba(255,255,255,0.25);
+}
+.infos {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
 }

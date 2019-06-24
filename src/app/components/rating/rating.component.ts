@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class RatingComponent implements OnInit {
 
   @Input() rating: number;
+  @Input() cardContent = false;
 
   constructor() { }
 

@@ -14,6 +14,7 @@ export class MoviesListComponent implements OnInit {
   movies: Movie[] = [];
   pages = 0;
   currentPage = 1;
+  pageInitial = true;
 
   constructor(private dataStoreServ: DataStorageService, private tmdbServ: TmdbService) { }
   
@@ -21,10 +22,17 @@ export class MoviesListComponent implements OnInit {
     this.dataStoreServ.moviesQuery$.subscribe(data => {
       this.movies = data.results;
       this.pages = data.total_pages;
+      this.pageInitial = false;
     });
 
-    if (this.tmdbServ.queryTerm) {
-      this.getPage();  
+    this.dataStoreServ.clear$.subscribe(res => {
+      this.movies.length = 0;
+      this.pages = 0;
+      this.pageInitial = true;
+    })
+
+    if (this.tmdbServ.queryTerm != '') {
+      this.getPage(); 
     }
   }
 

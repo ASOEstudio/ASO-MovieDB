@@ -18,10 +18,15 @@ export class DataStorageService {
   configuration: ConfigurationRS;
   subject: Subject<MoviesRS>;
   moviesQuery$: Observable<MoviesRS>;
+  subjClear: Subject<boolean>;
+  clear$: Observable<boolean>;
 
   constructor(private http: HttpClient) {
     this.subject = new Subject<MoviesRS>();
     this.moviesQuery$ = this.subject.asObservable();
+
+    this.subjClear = new Subject<boolean>();
+    this.clear$ = this.subjClear.asObservable();
   }
 
   getConfig() {
@@ -33,11 +38,21 @@ export class DataStorageService {
   }
 
   setMoviesQuery(data) {
-    this.subject.next(data);
+    if (typeof data == 'boolean') {
+      this.subjClear.next(true);
+    } else {
+      this.subject.next(data);
+    }
   }
 
   private saveLocal(key: string, item: any) {
     localStorage.setItem(key, JSON.stringify(item));
+  }
+
+  fixDateObject(date) {
+    const parts: number = date.split(/-|T|Z/);
+    let dateObj = new Date(parts[0], parts[1] - 1, parts[2]);
+    return dateObj;
   }
 
 }

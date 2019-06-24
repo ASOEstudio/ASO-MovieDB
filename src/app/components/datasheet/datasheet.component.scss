@@ -1,0 +1,51 @@
+@import '../../../global-variables.scss';
+
+section {
+    overflow: hidden;
+    position: relative;
+    background-color: $mat-primary-color;
+    padding: 2.5rem 0;
+    background-blend-mode: soft-light;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: $margin-end;
+}
+.poster {
+    position: absolute;
+    top: -50%;
+    margin-bottom: 50%;
+    width: 100%;
+    -webkit-filter: blur(10px) opacity(0.15) grayscale(1);
+    filter: opacity(0.15) grayscale(1);
+}
+.info {
+    position: relative;
+    width: 100%;
+}
+.info-section {
+    flex-direction: column;
+    width: 50%;
+    padding-left: 1rem;
+    p {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+    }
+    span {
+        margin-right: .25rem;
+    }
+    b {
+        display: block;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    i {
+        font-size: 1.75rem;
+        margin-right: 1rem;
+        width: 2rem;
+        min-width: 2rem;
+    }
+    a {
+        color: rgba(255,255,255,.8);
+    }
+}

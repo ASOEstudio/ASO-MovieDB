@@ -2,7 +2,8 @@
 
 .primary-card {
     position: relative;
-    padding: 0 .25rem 1rem;
+    padding: 0 .25rem;
+    margin: $margin-base;
 }
 .backdrop {
     width: 100%;
@@ -58,7 +59,9 @@
 .overview {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0 1rem;
+    margin: $margin-base;
     i {
         color: $mat-primary-color;
         text-shadow: 1px 1px 0 rgba(255,255,255,.8)

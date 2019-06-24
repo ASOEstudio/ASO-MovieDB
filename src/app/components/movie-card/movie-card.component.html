@@ -1,9 +1,17 @@
 <mat-card>
-  <div class="without-img" *ngIf="!movie.poster_path; else hasPoster">
-    <i class="far fa-image"></i>
+  <div class="image-container">
+    <div class="without-img" *ngIf="!movie.poster_path; else hasPoster">
+      <i class="far fa-image"></i>
+    </div>
+    <ng-template #hasPoster>
+      <img [src]="poster" [alt]="movie.title">
+    </ng-template>
   </div>
-  <ng-template #hasPoster>
-    <img [src]="poster" [alt]="movie.title">
-  </ng-template>
-
+  <div class="infos">
+    <div class="info">
+      <h3>{{movie.title}}</h3>
+      <span *ngIf="date">{{date | date:'dd MMM y'}}</span>
+    </div>
+    <app-rating [cardContent]="true" [rating]="movie.vote_average"></app-rating>
+  </div>
 </mat-card>

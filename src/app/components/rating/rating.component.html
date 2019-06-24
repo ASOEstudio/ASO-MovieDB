@@ -1,12 +1,12 @@
-<div class="container-spinner center-flex">
-  <div class="rating-container">
-    <div class="outer-circle">
-      <div class="inner-circle">
-        <b>{{rating}}</b>
+<div class="container-spinner center-flex" [ngClass]="cardContent ? 'card' : 'page'">
+  <div class="rating-container" [ngClass]="cardContent ? 'card' : 'page'">
+    <div class="outer-circle" [ngClass]="cardContent ? 'card' : 'page'">
+      <div class="inner-circle" [ngClass]="cardContent ? 'card' : 'page'">
+        <b [ngClass]="cardContent ? 'card' : 'page'">{{rating}}</b>
       </div>
     </div>
   </div>
   <mat-progress-spinner [value]="rating * 10"
-    [diameter]="120" [strokeWidth]="10" color="accent">
+    [diameter]="cardContent ? 60 : 120" [strokeWidth]="cardContent ? 5 : 10" color="{{cardContent ? 'primary' : 'accent'}}">
   </mat-progress-spinner>
 </div>

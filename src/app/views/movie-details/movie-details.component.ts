@@ -16,8 +16,9 @@ const base_url = environment.IMG_STORAGE;
 export class MovieDetailsComponent implements OnInit {
 
   movie: MovieRS;
-  backdrop: string;
+  backdrop: string[];
   poster: string;
+  date: Date;
   loading = true;
 
   constructor(
@@ -52,15 +53,15 @@ export class MovieDetailsComponent implements OnInit {
     const posterSize = this.dataStoreServ.configuration.images.poster_sizes[3];
 
     this.poster = base_url + posterSize + this.movie.poster_path;
-    this.backdrop = "url('" + base_url + backdropSize + this.movie.backdrop_path + "')";
+    this.backdrop = [
+      "url('" + base_url + backdropSize + this.movie.backdrop_path + "')",
+      base_url + backdropSize + this.movie.backdrop_path
+    ];
 
+    if (this.movie.release_date != '') {
+      this.date = this.dataStoreServ.fixDateObject(this.movie.release_date);
+    }
     this.loading = false;
-  }
-
-  fixDateObject(date) {
-    const parts: number = date.split(/-|T|Z/);
-    let dateObj = new Date(parts[0], parts[1] - 1, parts[2]);
-    return dateObj;
   }
 
 }

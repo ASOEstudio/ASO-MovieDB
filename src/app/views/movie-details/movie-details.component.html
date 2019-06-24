@@ -2,7 +2,7 @@
 <ng-template #loaded>
   <main class="container">
     <section class="primary-card">
-      <div class="backdrop" [ngStyle]="{'background-image' : backdrop ? backdrop : ''}"></div>
+      <div class="backdrop" [ngStyle]="{'background-image' : backdrop ? backdrop[0] : ''}"></div>
 
       <div class="info-container">
         <div class="base-info-container">
@@ -13,14 +13,15 @@
               <h1>
                 {{movie.title}}
               </h1>
-              <p [ngClass]="movie.status == 'Released' ? 'hightlight' : 'hightlight-accent'">
+              <p *ngIf="movie.release_date != ''"
+                [ngClass]="movie.status == 'Released' ? 'hightlight' : 'hightlight-accent'">
                 <i [ngClass]="movie.status == 'Released' ? 'far fa-calendar-check' : 'fas fa-calendar-day'"></i>
-                {{fixDateObject(movie.release_date) | date:'dd MMM y'}}
+                {{date | date:'dd MMM y'}}
               </p>
             </div>
 
             <div class="basic-flex">
-              <span class="chips hightlight">
+              <span *ngIf="movie.runtime" class="chips hightlight">
                 <b class="duration">{{movie.runtime}}</b> min
               </span>
               <span class="chips" *ngFor="let genere of movie.genres">
@@ -45,7 +46,5 @@
     </section>
 
   </main>
-  <app-datasheet></app-datasheet>
+  <app-datasheet [backdrop]="backdrop[1]" [movieData]="movie"></app-datasheet>
 </ng-template>
-
-{{movie | json}}

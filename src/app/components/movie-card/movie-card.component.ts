@@ -15,6 +15,7 @@ export class MovieCardComponent implements OnInit {
 
   @Input() movie: Movie;
   poster: string;
+  date: Date;
 
   constructor(private dataStoreServ: DataStorageService) { }
 
@@ -25,5 +26,10 @@ export class MovieCardComponent implements OnInit {
   init() {
     const size = this.dataStoreServ.configuration.images.poster_sizes[0];
     this.poster = base_url + size + this.movie.poster_path;
+
+    if (this.movie.release_date != '') {
+      this.date = this.dataStoreServ.fixDateObject(this.movie.release_date);
+    }
   }
+
 }

@@ -1,0 +1,17 @@
+span, i {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: .5rem;
+}
+span {
+    margin-right: 1rem;
+}
+i {
+    cursor: pointer;
+    margin-left: .5rem;
+    transition: color ease-in-out 0.25s;
+}
+.disabled {
+    color: rgba(255,255,255,.25);
+    pointer-events: none;
+}

@@ -1,7 +1,12 @@
 <form [formGroup]="form">
+  <span>Buscar</span>
   <mat-form-field>
     <input matInput type="text"
       formControlName="searchField"
-      (keyup)="debounce.next($event)"/>
+      (keyup)="debounce.next($event)"
+      (keyup.enter)="redirect()"/>
   </mat-form-field>
+  <i [ngClass]="form.get('searchField').value ? '' : 'disabled'"
+    (click)="searchQuery(true); form.get('searchField').reset()"
+    class="fas fa-times-circle"></i>
 </form>

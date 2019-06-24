@@ -1,9 +1,21 @@
-<main class="container">
-    <app-movie-card *ngFor="let movie of movies"
+<main class="container center-flex cards-conteiner" [ngClass]=" pages > currentPage ? '' : 'margin-bottom'">
+    <section *ngIf="pageInitial || movies.length < 1; list" class="not-found center-flex">
+        <span class="message" *ngIf="pageInitial">
+            <i class="fas fa-arrow-up"></i>
+            <span>Busque por algo <br> para trazer resultados!</span>
+        </span>
+        <span *ngIf="!pageInitial && movies.length < 1">Nada Encontrado!</span>
+    </section>
+
+    <app-movie-card class="cards" *ngFor="let movie of movies"
         [movie]="movie" [routerLink]="['/movie', movie.id]">
     </app-movie-card>
-    <button *ngIf="pages > currentPage"
-        mat-raised-button color="primary"
-        (click)="getPage('next')">carregar mais
-    </button>
 </main>
+<section class="load-more-container margin-bottom" *ngIf="pages > currentPage">
+    <div class="container center-flex load-more">
+        <span>Ainda há mais resultados para mostrar! </span>
+        <button mat-raised-button color="primary"
+            (click)="getPage('next')">carregar mais
+        </button>
+    </div>
+</section>

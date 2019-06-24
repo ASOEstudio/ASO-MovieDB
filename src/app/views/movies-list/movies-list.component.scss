@@ -1,0 +1,44 @@
+@import '../../../global-variables.scss';
+
+.cards-conteiner {
+    flex-direction: column;
+}
+.cards {
+    width: 100%;
+    max-width: 600px;
+    margin: .5rem;
+}
+.load-more-container {
+    margin-top: 1rem;
+    padding: 1rem 0;
+    background-color: $mat-accent-color;
+}
+.load-more {
+    justify-content: center;
+    span {
+        font-size: 1.5rem;
+        color: rgba(0,0,0,.75);
+        margin-right: 1rem;
+        font-weight: 300;
+    }
+}
+.margin-bottom {
+    margin-bottom: $margin-end;
+}
+.not-found {
+    justify-content: center;
+    height: calc(100vh - 64px);
+    .message {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        i {
+            font-size: 3rem;
+            transform: rotate(30deg);
+        }
+    }
+    span {
+        text-align: center;
+        font-size: 2rem;
+    }
+}
