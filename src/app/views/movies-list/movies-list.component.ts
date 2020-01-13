@@ -39,7 +39,7 @@ export class MoviesListComponent implements OnInit {
   getPage(mode: string = undefined) {
     let pageNum = this.currentPage;
     if (mode == 'next') {
-      pageNum = this.currentPage + 1;
+      pageNum = this.currentPage++;
     }
     this.tmdbServ.searchItems({ page: pageNum }).subscribe(
       res => {
